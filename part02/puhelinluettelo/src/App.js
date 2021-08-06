@@ -32,7 +32,10 @@ const App = () => {
     const nameExists = persons.some(person => person.name === newName);
    
     if (nameExists) {
+
       const oldContact = persons.filter(person => person.name === newName);
+      // console.log(oldContact);
+
       if (window.confirm(`${newName} already exists in your phonebook. Want to update their number?`)) {
         return personService.edit(oldContact[0].id, newContact)
           .then(contact => {
@@ -55,13 +58,22 @@ const App = () => {
     }
 
     // Send data to server.
-    personService.create(newContact).then(contact => {
-      setPersons(persons.concat(contact));
-      setMessage(`Added ${contact.name}!`);
-      setTimeout(() => {
-        setMessage(null)
-      }, 5000);
-    });
+    personService
+      .create(newContact)
+      .then(contact => {
+        setPersons(persons.concat(contact));
+        setMessage(`Added ${contact.name}!`);
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000);
+      })
+      .catch(error => {
+        // console.log( error.response.data.error );
+        setMessage(`${error.response.data.error}`);
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000);
+      });
   }
 
   const handleNameChange = (event) => {
