@@ -1,0 +1,25 @@
+GET http://localhost:3003/api/blogs
+###
+POST http://localhost:3003/api/blogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBvc3N1IiwiaWQiOiI2MTBmMWVhNGNhZjExNDZlZGNkMmZhYzEiLCJpYXQiOjE2MjgzODUwMTh9.iIcYF5ZMmwnVWGbJRuQswISg4rzrUYef7DqYVI9UH-M
+Content-Type: application/json
+
+{ 
+	"title": "Title", 
+	"author": "Emil Selroos",
+	"url": "https://lol.fi/",
+	"likes": 0
+}
+###
+PUT http://localhost:3003/api/blogs/610ef8d7d44bbf02086deb23
+Content-Type: application/json
+
+{ 
+	"title": "New Title 2", 
+	"author": "Emil Selroos",
+	"url": "https://lol.fi/",
+	"likes": 0
+}
+###
+DELETE http://localhost:3003/api/blogs/610f1f7d4c09987d80e55906
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBvc3N1IiwiaWQiOiI2MTBmMWVhNGNhZjExNDZlZGNkMmZhYzEiLCJpYXQiOjE2MjgzODUwMTh9.iIcYF5ZMmwnVWGbJRuQswISg4rzrUYef7DqYVI9UH-M
