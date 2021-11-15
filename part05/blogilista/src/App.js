@@ -149,7 +149,7 @@ const App = () => {
 						: null}
 
 					{showCreateForm === 0 && (
-						<button onClick={() => setShowCreateForm(1)} style={{ marginTop: '10px' }}>Create a new blog post</button>
+						<button id="create-new-blog" onClick={() => setShowCreateForm(1)} style={{ marginTop: '10px' }}>Create a new blog post</button>
 					)}
 
 				</>

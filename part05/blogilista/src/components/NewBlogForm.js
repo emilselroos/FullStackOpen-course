@@ -14,23 +14,23 @@ const NewBlogForm = ({ createNewBlog, setShowCreateForm }) => {
 			author: author,
 			url: url,
 		});
-	
+
 		setTitle('');
 		setAuthor('');
 		setUrl('');
-	}
+	};
 
 	const handleTitleChange = (event) => {
-		setTitle(event.target.value)
-	}
+		setTitle(event.target.value);
+	};
 
 	const handleAuthorChange = (event) => {
-		setAuthor(event.target.value)
-	}
+		setAuthor(event.target.value);
+	};
 
 	const handleUrlChange = (event) => {
-		setUrl(event.target.value)
-	}
+		setUrl(event.target.value);
+	};
 
 	return (
 		<form id="form" onSubmit={addNewBlog}>
@@ -38,7 +38,7 @@ const NewBlogForm = ({ createNewBlog, setShowCreateForm }) => {
 				Title: <input id="title" type="text" name="input-title" value={title} onChange={handleTitleChange} /><br />
 				Author: <input id="author" type="text" name="input-author" value={author} onChange={handleAuthorChange} /><br />
 				URL: <input id="url" type="text" name="input-url" value={url} onChange={handleUrlChange} /><br />
-			<button type="submit">Create</button>
+			<button id="create-new-button" type="submit">Create</button>
 			<button onClick={() => setShowCreateForm(0)}>Hide</button>
 		</form>
 	);
