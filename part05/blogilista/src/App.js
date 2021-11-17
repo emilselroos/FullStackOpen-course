@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
 import Blog from './components/Blog';
 import LoginForm from './components/LoginForm';
 import NewBlogForm from './components/NewBlogForm';
+import Navigation from './components/Navigation.js';
 
 import blogService from './services/blogs';
 import loginService from './services/login';
 
 const App = () => {
+
 	const [user, setUser] = useState(null);
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -103,9 +107,7 @@ const App = () => {
 	};
 
 	return (
-		<div>
-			<h1>Blogs</h1>
-
+		<div style={{ backgroundColor: 'beige', padding: 0, margin: 0, }}>
 			{notification && (
 				<div style={{ border: '2px solid #000', padding: '6px 8px' }}>{notification}</div>
 			)}
@@ -124,19 +126,23 @@ const App = () => {
 
 			{user && (
 				<>
-					<p>{user.name} logged in. <button onClick={handleLogout}>LOGOUT</button></p>
+
+					<Navigation user={user} handleLogout={handleLogout} />
+					<h1>Blogs</h1>
+
 
 					{blogs
-						.sort((first, second) => ( second.likes - first.likes ))
+						.sort((first, second) => (second.likes - first.likes))
 						.map((blog) => (
 							<Blog
 								key={blog.id}
 								blog={blog}
-								own={ user.username === blog.user.username ? true : false }
+								own={user.username === blog.user.username ? true : false}
 								handleLike={handleLike}
 								handleRemove={handleRemove}
 							/>))
 					}
+
 
 					{showCreateForm ?
 						<NewBlogForm
@@ -151,6 +157,7 @@ const App = () => {
 					{showCreateForm === 0 && (
 						<button id="create-new-blog" onClick={() => setShowCreateForm(1)} style={{ marginTop: '10px' }}>Create a new blog post</button>
 					)}
+
 
 				</>
 			)}
