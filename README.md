@@ -4,6 +4,7 @@ MOOC 2021
 ## Huomioita
 
 - nodemon voi asentaa deviin
+- Syytä opiskella vielä myöhemmin GraphQL fragmentit ja subskriptiot (osa 8)
 
 # Tärkeitä linkkejä
 
