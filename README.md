@@ -1,5 +1,6 @@
-# mooc-2021
-MOOC 2021
+# Full Stack Open 2021
+
+Full Stack Open 2021 (14 opintopistettä)
 
 ## Suoritetut osat
 
@@ -17,7 +18,8 @@ MOOC 2021
 - Osa 10: React Native (suorittamatta)
 - Osa 11: CI/CD (suorittamatta)
 - Osa 12: Konttiteknologia (suorittamatta)
-- Osa 13: Uusi tulossa? (Telegramissa mainittu tämä lokakuussa 2021)
+
+- Osa 13: Relaatiotietokannan käyttö
 
 ## Huomioita
 
@@ -26,7 +28,7 @@ MOOC 2021
 
 # Tärkeitä linkkejä
 
-- [Full Stack -kurssisivu](https://courses.helsinki.fi/fi/aytkt21009/129171256) (13op)
+- [Full Stack -kurssisivu](https://courses.helsinki.fi/fi/aytkt21009/129171256) (14op)
 - [Harjoitustyö](https://github.com/FullStack-HY/misc/blob/main/harjoitustyo.md) (10op)
 
 - [Index as a key is an anti-pattern](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318)
