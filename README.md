@@ -2,24 +2,24 @@
 
 Full Stack Open 2021 (14 opintopistettä)
 
-## Suoritetut osat
+## Sisältö
 
-- Osa 0: Web-sovellusten toiminnan perusteet
-- Osa 1: Reactin perusteet
-- Osa 2: Palvelimen kanssa tapahtuva kommunikointi
-- Osa 3: Palvelimen ohjelmointi NodeJS:n Express-kirjastolla
-- Osa 4: Express-sovellusten testaaminen, käyttäjänhallinta
-- Osa 5: React-sovelluksen testaaminen
-- Osa 6: Sovelluksen tilan hallinta Redux-kirjastolla
-- Osa 7: React router, custom-hookit, tyylikirjastot ja webpack
-- Osa 8: GraphQL
-- Osa 9: TypeScript
+- **Osa 0:** Web-sovellusten toiminnan perusteet
+- **Osa 1:** Reactin perusteet
+- **Osa 2:** Palvelimen kanssa tapahtuva kommunikointi
+- **Osa 3:** Palvelimen ohjelmointi NodeJS:n Express-kirjastolla
+- **Osa 4:** Express-sovellusten testaaminen, käyttäjänhallinta
+- **Osa 5:** React-sovelluksen testaaminen
+- **Osa 6:** Sovelluksen tilan hallinta Redux-kirjastolla
+- **Osa 7:** React router, custom-hookit, tyylikirjastot ja webpack
+- **Osa 8:** GraphQL
+- **Osa 9:** TypeScript
 
-- Osa 10: React Native (suorittamatta)
-- Osa 11: CI/CD (suorittamatta)
-- Osa 12: Konttiteknologia (suorittamatta)
+- **Osa 10:** React Native **(suorittamatta)**
+- **Osa 11:** CI/CD **(suorittamatta)**
+- **Osa 12:** Konttiteknologia **(suorittamatta)**
 
-- Osa 13: Relaatiotietokannan käyttö
+- **Osa 13:** Relaatiotietokannan käyttö
 
 ## Huomioita
 
