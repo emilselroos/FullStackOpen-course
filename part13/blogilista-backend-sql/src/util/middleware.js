@@ -17,6 +17,18 @@ const errorHandler = (error, request, response, next) => {
 		return response.status(400).json({ error: error.message });
 	}
 
+	if (error.name === 'SequelizeValidationError') {
+		return response.status(400).json({ error: error.message });
+	}
+
+	if (error.name === 'SequelizeForeignKeyConstraintError') {
+		return response.status(400).json({ error: error.message });
+	}
+
+	if (error.name === 'SequelizeEagerLoadingError') {
+		return response.status(400).json({ error: error.message });
+	}
+
 	next(error);
 
 };

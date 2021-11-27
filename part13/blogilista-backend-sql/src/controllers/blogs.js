@@ -44,9 +44,10 @@ router.post('/', async (req, res, next) => {
 		author: req.body.author,
 		title: req.body.title,
 		url: req.body.url,
+		year: req.body.year,
 		userId: req.user.id,
 	}).catch(error => {
-		res.status(400).send('Something went wrong...');
+		// res.status(400).send('Something went wrong...');
 		next(error);		
 	});
 

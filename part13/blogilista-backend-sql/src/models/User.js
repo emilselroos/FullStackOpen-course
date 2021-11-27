@@ -24,6 +24,12 @@ User.init({
 		}
 	},
 
+	disabled: {
+		type: DataTypes.BOOLEAN,
+		defaultValue: false,
+		allowNull: false,
+	},
+
 
 	}, {
 	sequelize,
