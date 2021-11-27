@@ -1,20 +1,40 @@
 import express from 'express';
 import service from '../services/patient.service';
-import toNewDiaryEntry from '../utils';
+import { toNewPatientEntry, toNewEntry } from '../utils';
 
 const router = express.Router();
 
 router.get('/', (_req, res) => {
-  const entries = service.getEntries();
-  // Let's delete the SSN from each entry for security reasons.
-  entries.forEach((v) => { delete v.ssn });
-  res.send(entries);
+  const patients = service.getPatients();
+  res.send(patients);
+});
+
+router.get('/:id', (req, res) => {
+  const patient = service.getPatient(req.params.id);
+  res.send(patient);
+});
+
+router.post('/:id/entries', (req, res) => {
+
+  try {
+    const newEntry = toNewEntry(req.body);
+    const addedEntry = service.addEntry(req.params.id, newEntry);
+    res.json(addedEntry);
+  } catch (error: unknown) {
+    let errorMessage = 'Something went wrong.';
+    if (error instanceof Error) {
+      errorMessage += ' Error: ' + error.message;
+    }
+    res.status(400).send(errorMessage);
+  }
+
+
 });
 
 router.post('/', (req, res) => {
   try {
-    const newPatientEntry = toNewDiaryEntry(req.body);
-    const addedEntry = service.addEntry(newPatientEntry);
+    const newPatientEntry = toNewPatientEntry(req.body);
+    const addedEntry = service.addPatient(newPatientEntry);
     res.json(addedEntry);
   } catch (error: unknown) {
     let errorMessage = 'Something went wrong.';
