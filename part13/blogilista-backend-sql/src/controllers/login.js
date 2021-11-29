@@ -21,6 +21,14 @@ loginRouter.post('/', async (request, response, next) => {
 
 	const token = jwt.sign(userForToken, SECRET);
 
+	// DELETE any existing LoginData for current user.
+	await LoginData.destroy({
+		where: {
+			user_id: user.id,
+		}
+	});
+
+	// CREATE a new session.
 	const loginEntry = await LoginData.create({
 		user_id: user.id,
 		token: token,

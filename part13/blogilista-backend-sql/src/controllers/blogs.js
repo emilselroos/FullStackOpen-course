@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, LoginData } = require('../models');
 
 router.get('/', async (req, res, next) => {
 
@@ -38,6 +38,17 @@ router.post('/', async (req, res, next) => {
 
 	if (!req.token || !req.user.id) {
 		return res.status(401).json({ error: 'Token is missing or invalid!' });
+	}
+
+	const existingSession = await LoginData.findOne({
+		where: {
+			token: req.token,
+			user_id: req.user.id,
+		}
+	})
+
+	if (!existingSession) {
+		return res.status(401).json({ error: 'You token has expired! Login again.' });
 	}
 
 	const blog = await Blog.create({

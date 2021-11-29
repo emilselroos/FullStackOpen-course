@@ -10,7 +10,7 @@ logoutRouter.delete('/', async (req, res) => {
 		return res.status(401).json({ error: 'You are not logged in so you cant logout either.' });
 	}
 
-	// console.log(req.token);
+	console.log(req.token);
 	console.log(req.user);
 
 	const log = await LoginData.findOne({
@@ -18,20 +18,14 @@ logoutRouter.delete('/', async (req, res) => {
 			user_id: req.user.id,
 		}
 	});
-	
-	console.log(log);
-
-	if (log.token !== req.token) {
-		res.json('Wrong token! You should not even be here.');
-	}
 
 	if (log.token === req.token) {
 		// Kaikki OK, poistetaan kirjautumistieto eli kirjataan käyttäjä ulos.
-		LoginData.delete({where: {user_id: req.user.id}});
+		LoginData.destroy({where: {user_id: req.user.id}});
 		res.json('You logged out correctly.');
 	}
 
-
+	res.json('Wrong token! You should not even be here.');
 
 });
 
