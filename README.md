@@ -14,8 +14,8 @@ Full Stack Open 2021 (14 opintopistettä)
 - **Osa 7:** React router, custom-hookit, tyylikirjastot ja webpack
 - **Osa 8:** GraphQL
 - **Osa 9:** TypeScript
-
-- **Osa 10:** React Native **(suorittamatta)**
+- **Osa 10:** React Native
+ 
 - **Osa 11:** CI/CD **(suorittamatta)**
 - **Osa 12:** Konttiteknologia **(suorittamatta)**
 
@@ -25,6 +25,7 @@ Full Stack Open 2021 (14 opintopistettä)
 
 - nodemon voi asentaa deviin
 - Syytä opiskella vielä myöhemmin GraphQL fragmentit ja subskriptiot (osa 8)
+- GraphQL:ssä periaatteena on, että selaimen koodi muodostaa kyselyn, joka kuvailee halutun datan ja lähettää sen API:lle HTTP POST -pyynnöllä. Toisin kuin REST:issä, GraphQL:ssä kaikki kyselyt kohdistetaan samaan osoitteeseen ja ovat POST-tyyppisiä.
 
 # Tärkeitä linkkejä
 

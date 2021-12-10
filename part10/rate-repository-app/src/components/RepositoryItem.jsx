@@ -62,27 +62,27 @@ const RepositoryItem = ({ item }) => {
 			<View style={styles.info}>
 				<Image source={{ uri: item.ownerAvatarUrl }} style={styles.image} />
 				<View style={styles.details}>
-					<Text style={styles.title}>{item.fullName}</Text>
-					<Text style={styles.description}>{item.description}</Text>
-					<Text style={styles.languageBlock}>{item.language}</Text>
+					<Text style={styles.title} testID="name">{item.fullName}</Text>
+					<Text style={styles.description} testID="description">{item.description}</Text>
+					<Text style={styles.languageBlock} testID="language">{item.language}</Text>
 				</View>
 			</View>
 			
 			<View style={styles.stats}>
 				<View style={styles.statsBlock}>
-					<Text fontWeight={'bold'} style={{ marginBottom: 4 }}>{kFormatter(item.stargazersCount)}</Text>
+					<Text fontWeight={'bold'} style={{ marginBottom: 4 }} testID="stars">{kFormatter(item.stargazersCount)}</Text>
 					<Text>Stars</Text>
 				</View>
 				<View style={styles.statsBlock}>
-					<Text fontWeight={'bold'} style={{ marginBottom: 4 }}>{kFormatter(item.forksCount)}</Text>
+					<Text fontWeight={'bold'} style={{ marginBottom: 4 }} testID="forks">{kFormatter(item.forksCount)}</Text>
 					<Text>Forks</Text>
 				</View>
 				<View style={styles.statsBlock}>
-					<Text fontWeight={'bold'} style={{ marginBottom: 4 }}>{item.reviewCount}</Text>
+					<Text fontWeight={'bold'} style={{ marginBottom: 4 }} testID="reviews">{item.reviewCount}</Text>
 					<Text>Reviews</Text>
 				</View>
 				<View style={styles.statsBlock}>
-					<Text fontWeight={'bold'} style={{ marginBottom: 4 }}>{item.ratingAverage}</Text>
+					<Text fontWeight={'bold'} style={{ marginBottom: 4 }} testID="ratings">{item.ratingAverage}</Text>
 					<Text>Rating</Text>
 				</View>
 			</View>
