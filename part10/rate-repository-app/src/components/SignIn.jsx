@@ -1,14 +1,19 @@
 import React, { useContext } from 'react';
-import { Pressable, View, StyleSheet } from 'react-native';
 import { useHistory } from 'react-router-dom';
+import useSignIn from '../hooks/useSignIn';
+import useAuthStorage from '../hooks/useAuthStorage';
+import { useApolloClient } from '@apollo/client';
+import { Pressable, View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import FormikTextInput from './FormikTextInput';
 import TextInput from './TextInput';
 import Text from './Text';
-import useSignIn from '../hooks/useSignIn';
-import useAuthStorage from '../hooks/useAuthStorage';
-import { useApolloClient } from '@apollo/client';
+
+const validationSchema = yup.object().shape({
+	username: yup.string().required('Username is required!'),
+	password: yup.string().required('Password is required!'),
+});
 
 const styles = StyleSheet.create({
 	button: {
@@ -23,15 +28,38 @@ const styles = StyleSheet.create({
 	}
 });
 
-const initialValues = {
-	username: '',
-	password: '',
-};
+const SignInForm = ({ onSubmit }) => {
+	return (
+		<View>
+			<Text style={{ fontSize: 24, textAlign: 'center', fontWeight: 'bold', margin: 20 }}>
+				Sign in
+			</Text>
+			<FormikTextInput name="username" placeholder="Username" testID="usernameField" />
+			<FormikTextInput name="password" placeholder="Password" isPassword testID="passwordField" />
+			<Pressable onPress={onSubmit} testID="submitButton">
+				<Text style={styles.button}>Sign in</Text>
+			</Pressable>
+		</View>
+	);
+}
 
-const validationSchema = yup.object().shape({
-	username: yup.string().required('Username is required!'),
-	password: yup.string().required('Password is required!'),
-});
+export const SignInFormContainer = ({ onSubmit }) => {
+
+	const initialValues = {
+		username: '',
+		password: '',
+	};
+	
+	return (
+		<Formik
+			initialValues={initialValues}
+			validationSchema={validationSchema}
+			onSubmit={onSubmit}
+		>
+			{({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
+		</Formik>
+	);
+};
 
 const SignIn = () => {
 	const history = useHistory();
@@ -60,29 +88,8 @@ const SignIn = () => {
 	}
 
 	return (
-		<Formik
-			initialValues={initialValues}
-			onSubmit={onSubmit}
-			validationSchema={validationSchema}
-		>
-			{ ({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} /> }
-		</Formik>
+		<SignInFormContainer onSubmit={onSubmit} />
 	);
 };
-
-const SignInForm = ({ onSubmit }) => {
-	return (
-		<View>
-			<Text style={{ fontSize: 24, textAlign: 'center', fontWeight: 'bold', margin: 20 }}>
-				Sign in
-			</Text>
-			<FormikTextInput name="username" placeholder="Username" />
-			<FormikTextInput name="password" placeholder="Password" isPassword />
-			<Pressable onPress={onSubmit}>
-				<Text style={styles.button}>Sign in</Text>
-			</Pressable>
-		</View>
-	);
-}
 
 export default SignIn;
