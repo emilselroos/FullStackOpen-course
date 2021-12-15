@@ -20,7 +20,7 @@ const SignOutTab = ({}) => {
 	
   return (
 	<Pressable onPress={handleSignOut}>
-		<Text style={{ color: 'white', fontWeight: 'bold', fontSize: theme.fontSizes.subheading, width: 100 }}>Sign out</Text>
+		<Text style={{ color: 'white', fontWeight: 'bold', fontSize: theme.fontSizes.subheading, padding: 8 }}>Sign out</Text>
 	</Pressable>
   );
 };

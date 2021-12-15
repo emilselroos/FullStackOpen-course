@@ -36,6 +36,7 @@ const AppBar = () => {
 				{data.authorizedUser === null && (
 					<>
 						<AppBarTab title="Repositories" path="/" />
+						<AppBarTab title="Sign up" path="/signup" />
 						<AppBarTab title="Sign in" path="/signin" />
 					</>
 				)}
@@ -43,6 +44,7 @@ const AppBar = () => {
 				{data.authorizedUser !== null && (
 					<>
 						<AppBarTab title="Repositories" path="/" />
+						<AppBarTab title="Create a review" path="/create-review" />
 						<SignOutTab />
 					</>
 				)}

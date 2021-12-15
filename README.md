@@ -26,6 +26,8 @@ Full Stack Open 2021 (14 opintopistettä)
 - nodemon voi asentaa deviin
 - Syytä opiskella vielä myöhemmin GraphQL fragmentit ja subskriptiot (osa 8)
 - GraphQL:ssä periaatteena on, että selaimen koodi muodostaa kyselyn, joka kuvailee halutun datan ja lähettää sen API:lle HTTP POST -pyynnöllä. Toisin kuin REST:issä, GraphQL:ssä kaikki kyselyt kohdistetaan samaan osoitteeseen ja ovat POST-tyyppisiä.
+- "debouncing" / use-debounce (npm) (part10)
+- "infinite scrolling" (part10)
 
 # Tärkeitä linkkejä
 

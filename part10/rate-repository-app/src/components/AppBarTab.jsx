@@ -10,7 +10,7 @@ const AppBar = ({ title, path }) => {
   return (
 	<Pressable>
 		<Link to={path}>
-			<Text style={{ color: 'white', fontWeight: 'bold', fontSize: theme.fontSizes.subheading, width: 100 }}>{title}</Text>
+			<Text style={{ color: 'white', fontWeight: 'bold', fontSize: theme.fontSizes.subheading, padding: 8 }}>{title}</Text>
 		</Link>
 	</Pressable>
   );

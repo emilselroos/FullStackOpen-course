@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import useSignIn from '../hooks/useSignIn';
 import useAuthStorage from '../hooks/useAuthStorage';
@@ -7,7 +7,6 @@ import { Pressable, View, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import FormikTextInput from './FormikTextInput';
-import TextInput from './TextInput';
 import Text from './Text';
 
 const validationSchema = yup.object().shape({

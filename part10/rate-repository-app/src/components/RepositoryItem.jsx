@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Pressable, Image } from 'react-native';
+import { View, StyleSheet, FlatList, Image, RecyclerViewBackedScrollViewBase } from 'react-native';
 import theme from '../theme';
 import Text from './Text';
+import * as Linking from 'expo-linking';
+import ReviewItem from './ReviewItem';
 
 const styles = StyleSheet.create({
 	container: {
@@ -48,17 +50,34 @@ const styles = StyleSheet.create({
 	statsBlock: {
 		alignItems: 'center',
 		width: 80,
+	},
+
+	gitHubLink: {
+		marginTop: 28,
+		backgroundColor: '#1167b1',
+		color: '#FFFFFF',
+		textAlign: 'center',
+		padding: 18,
+		fontWeight: 'bold',
+		borderRadius: 12,
 	}
 });
 
-const RepositoryItem = ({ item }) => {
+const ItemSeparator = () => <View style={styles.separator} />;
+
+const SingleRepositoryItem = ({ item, extended }) => {
 
 	const kFormatter = (num) => {
 		return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
 	}
 
+	const handleClick = () => {
+		Linking.openURL(item.url);
+	}
+
 	return (
 		<View style={styles.container}>
+
 			<View style={styles.info}>
 				<Image source={{ uri: item.ownerAvatarUrl }} style={styles.image} />
 				<View style={styles.details}>
@@ -86,8 +105,20 @@ const RepositoryItem = ({ item }) => {
 					<Text>Rating</Text>
 				</View>
 			</View>
+
+			{extended && (
+				<View>
+
+					<Text
+						style={styles.gitHubLink}
+						onPress={handleClick}
+					>Open in GitHub</Text>
+					
+				</View>
+			)}
+
 		</View>
 	);
 };
 
-export default RepositoryItem;
+export default SingleRepositoryItem;
