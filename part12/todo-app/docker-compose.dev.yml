@@ -10,11 +10,24 @@ services:
       - 8080:80
     container_name: reverse-proxy
 
+  app:
+    image: todo-frontend-dev
+    container_name: todo-frontend-dev
+    build:
+      context: ./todo-frontend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./todo-frontend:/usr/src/app
+    ports:
+      - 8000:3000
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080/api
+
   mongo:
     image: mongo
     container_name: mongo_container
     ports:
-     - 3456:27017
+      - 3456:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -30,27 +43,14 @@ services:
       - 6379:6379
     command: ['redis-server', '--appendonly', 'yes']
     volumes:
-      - ./redis_data:/data
-
-  app:
-    image: todo-frontend-dev
-    container_name: todo-frontend-dev
-    build:
-      context: ./todo-frontend
-      dockerfile: Dockerfile
-    volumes:
-      - ./todo-frontend:/usr/src/app
-    ports:
-      - 8000:3000
-    environment:
-      - REACT_APP_BACKEND_URL=http://localhost:8080/api
+      - ./todo-backend/redis_data:/data
 
   server:
     image: todo-backend-dev
     container_name: todo-backend-dev
     build:
      context: ./todo-backend
-     dockerfile: Dockerfile
+     dockerfile: dev.Dockerfile
     ports:
       - 3000:3000
     volumes:

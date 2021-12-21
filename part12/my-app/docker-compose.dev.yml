@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+
+  app:
+    image: my-app-frontend
+    container_name: my-app-frontend
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./frontend:/usr/src/app
+    ports:
+      - 8000:3000
+    environment:
+      - BACKEND_URL=my-app-backend:4000
+
+  server:
+    image: my-app-backend
+    container_name: my-app-backend
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    ports:
+      - 4000:4000
+    volumes:
+      - ./backend:/usr/src/server
+    command: ['npm', 'run', 'dev']
+    environment:
+      - MONGODB_URI=mongodb+srv://fullstack:fullstack_password@cluster0.nptbm.mongodb.net/mySecondDatabase?retryWrites=true&w=majority
+      - JWT_SECRET=verysecretspacecat
+
